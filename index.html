@@ -1,16 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=7, initial-scale=1.0">
-        <script src="https://pixijs.download/release/pixi.js"></script>
-        <title>MathKiller</title>
-    </head>
-    <body>
-        <h1>MathKiller</h1>
-        <button id="btnStart" onclick="startGame()">Jogar</button>
-    </body>
-    <footer>
-        <script src="/scripts/main.js"></script>
-    </footer>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="menu">
+            <h1 style="text-align: center;">Jogo matemático</h1>
+        
+            <button id="btnStart" type="button" onclick="startGame()">Começar</button>
+        </div>
+    
+        <div id="jogo">
+            <h1>Qual o resultado de <span id="primeiroNum">23</span> <span id="operacao"> * </span> <span id="segundoNum"> 8 </span>?</h1>
+        
+            <div class="opcoes" id="opcoes">
+                <div id="opcao1" class="opcao1">
+    
+                </div>
+    
+                <div id="opcao2" class="opcao2">
+    
+                </div>
+    
+                <div id="opcao3" class="opcao3">
+                
+                </div>
+    
+                <h1 id="condicao"></h1>
+            </div>
+        </div>
+    </div>
+    
+
+    
+
+
+    <!-- <div id="square" class="square" onclick="moveSquare()">
+        
+    </div> -->
+
+    <script src="script.js"></script>
+</body>
 </html>
