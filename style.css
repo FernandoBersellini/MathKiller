@@ -4,20 +4,32 @@
     font-family: "Montserrat", sans-serif;
 }
 
+:root {
+    margin: 0;
+    position: relative;
+    background-color: #fa3;
+}
+
 .wrapper {
     padding: 15px;
     margin: auto;
 }
 
 .menu {
+    margin: 25vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.menu h1 {
+    font-size: 72px;
+    font-style: italic;
+    text-decoration: overline underline double #0af;
+}
+
 #jogo {
-    visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,11 +56,38 @@
 }
 
 .opcoes div:hover {
-    background-color:  	#686868;
+    background-color: #686868;
 }
 
+#modalInst, #modalCred {
+    visibility: hidden;
+    top: 25vh;
+    left: 50vh;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+#modalInst.open, #modalCred.open {
+    visibility: visible;
+}
 
+.inner-modal {
+    width: 50vh;
+    padding: 100px 200px;
+    border-radius: 15px;
+    background: radial-gradient(#0af, #08d);
+}
 
+button {
+    background-color: #dbb;
+    padding: 10px 35px;
+    border-radius: 10px;
+    margin: 10px;
+}
 
-
+button:hover {
+    background-color: #fef;
+    cursor: pointer;
+}

@@ -1,48 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MathKiller</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="wrapper">
-        <div class="menu">
-            <h1 style="text-align: center;">Jogo matemático</h1>
-        
-            <button id="btnStart" type="button" onclick="startGame()">Começar</button>
-        </div>
-    
-        <div id="jogo">
-            <h1>Qual o resultado de <span id="primeiroNum">23</span> <span id="operacao"> * </span> <span id="segundoNum"> 8 </span>?</h1>
-        
-            <div class="opcoes" id="opcoes">
-                <div id="opcao1" class="opcao1">
-    
-                </div>
-    
-                <div id="opcao2" class="opcao2">
-    
-                </div>
-    
-                <div id="opcao3" class="opcao3">
-                
-                </div>
-    
-                <h1 id="condicao"></h1>
-            </div>
+    <div class="menu">
+        <h1>MathKiller</h1>
+        <button id="btnStart" type="button" onclick="startGame()">Começar</button>
+        <button id="btnInstructions" type="button">Instruções</button>
+        <button id="btnCredits" type="button">Créditos</button>
+    </div>
+
+    <div id="modalInst">
+        <div class="inner-modal">
+            <h1>Como jogar</h1>
+            <p>O jogo consiste em peguntas e respostas, responda antes do tempo acabar e ficará tudo bem!<br>
+            Caso consiga responder uma certa quantidade de perguntas corretamente,<br>
+            você ganhará mais tempo e a dificuldade do jogo aumentará!</p>
+            <button id="closeInst">Voltar</button>
         </div>
     </div>
-    
 
-    
-
-
-    <!-- <div id="square" class="square" onclick="moveSquare()">
-        
-    </div> -->
-
-    <script src="script.js"></script>
+    <div id="modalCred">
+        <div class="inner-modal">
+            <h1>Créditos</h1>
+            <p>Kleyton, Gilson, Matheus, Fernando, Geovanne</p>
+            <button id="closeCred">Voltar</button>
+        </div>
+    </div>
 </body>
+<footer>
+    <script src="/scripts/events.js"></script>
+</footer>
 </html>
