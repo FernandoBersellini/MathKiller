@@ -6,7 +6,7 @@
 
 :root {
     margin: 0;
-    position: relative;
+    padding: 25px;
     background-color: #fa3;
 }
 
@@ -35,15 +35,16 @@
     align-items: center;
 }
 
-.opcoes {
+.container {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 1200px;
+    width: 180vh;
+    height: 70vh;
     gap: 30px;
 }
 
-.opcoes div {
+.container div {
     background-color: #bbc4c2;
     padding: 15px;
     width: 100px;
@@ -55,7 +56,7 @@
     transition: 0.3s;
 }
 
-.opcoes div:hover {
+.container div:hover {
     background-color: #686868;
 }
 

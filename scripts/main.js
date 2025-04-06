@@ -1,13 +1,45 @@
-window.onload = game();
+//Valores de dificuldade
+let diffValue = 0;
+let newValue = 10;
 
-function game() {
+//Pontuação
+let score = 0;
+
+//Executa ao inicializar página
+window.onload = chooseDiff(newValue);
+
+//Escolhe e ajusta a dificuldade
+function chooseDiff(newValue) {
+    diffValue = diffValue + newValue;
+    startGame(diffValue);
+}
+
+//Cria um valor aleatório
+function createValue(diffValue) {
+    return Math.floor(Math.random() * diffValue) + 1;
+}
+
+//Inicializa o jogo
+function startGame(diffValue) {
     
-    let num1 = Math.floor(Math.random() * 100) + 1
-    let num2 = Math.floor(Math.random() * 100) + 1
-    let resultado = 0
-    let opcaoCerta = false
+    let num1 = createValue(diffValue);
+    let num2 = createValue(diffValue);
     
-    let operacao = Math.floor(Math.random() * 4) + 1 
+    let resultado = 0;
+    let opcaoCerta = false;
+    
+    //Define quais operadores estarão disponíveis
+    let op = 1;
+    
+    if(diffValue >= 300) {
+        op = 4;
+    } else if(diffValue >= 200) {
+        op = 3;
+    } else if(diffValue >= 100) {
+        op = 2;
+    }
+
+    let operacao = Math.floor(Math.random() * op) + 1;
 
     console.log(operacao)
 
@@ -39,9 +71,9 @@ function game() {
     let opcao2 = document.getElementById("opcao2")
     let opcao3 = document.getElementById("opcao3")
 
-    opcao1.innerHTML = Math.floor(Math.random() * 100)
-    opcao2.innerHTML = Math.floor(Math.random() * 100)
-    opcao3.innerHTML = Math.floor(Math.random() * 100)
+    opcao1.innerHTML = createValue(diffValue);
+    opcao2.innerHTML = createValue(diffValue);
+    opcao3.innerHTML = createValue(diffValue);
 
     let numOpcao = Math.floor(Math.random() * 3) + 1
 
