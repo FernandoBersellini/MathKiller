@@ -1,14 +1,15 @@
 //Valores de dificuldade
 let diffValue = 0;
 let newValue = 10;
+let resultado;
 
-let resultado = 0;
+//Verificador booleano para evitar criação desnecessária de EventListener
+var verify = false;
 
 //Pontuação
 let score = 0;
-
 const pontuacao = document.getElementById("pontuacao")
-pontuacao.textContent = score
+pontuacao.textContent = "Pontuação: " + score;
 
 const resetar = document.getElementById("btnRestart")
 
@@ -49,7 +50,7 @@ function startGame(diffValue) {
 
     let operacao = Math.floor(Math.random() * op) + 1;
 
-    console.log(operacao)
+    console.log("Operador escolhido para calculo: " + operacao)
 
     let operator = document.getElementById("operacao")
 
@@ -78,73 +79,56 @@ function startGame(diffValue) {
     let opcao1 = document.getElementById("opcao1")
     let opcao2 = document.getElementById("opcao2")
     let opcao3 = document.getElementById("opcao3")
+    let opcao4 = document.getElementById("opcao4")
+    let opcao5 = document.getElementById("opcao5")
+    let opcao6 = document.getElementById("opcao6")
 
-    const arr = [opcao1,opcao2,opcao3]
+    const arr = [opcao1, opcao2, opcao3, opcao4, opcao5, opcao6];
 
-    opcao1.innerHTML = createValue(diffValue);
-    opcao2.innerHTML = createValue(diffValue);
-    opcao3.innerHTML = createValue(diffValue);
+    //Escolhe uma opção aleatória e verifica se não haverá repetição de valores
+    escolheOpcao(arr, resultado);
 
-    let numOpcao = Math.floor(Math.random() * 3) + 1
-
-    switch (numOpcao) {
-        case 1:
-            opcao1.innerHTML = resultado
-            break
-        case 2:
-            opcao2.innerHTML = resultado
-            break
-        case 3:
-            opcao3.innerHTML = resultado
-            break
+    //Verifica se a função já foi executada anteriormente
+    if(!verify) {
+        checkValue(arr);
+        verify = true;
     }
 }
 
-let condicao = document.getElementById("condicao")
-
-opcao1.addEventListener("click", function() {
-    // let condicao = document.getElementById("condicao")
-
-    if (parseInt(opcao1.innerText) === resultado) {
-        condicao.innerText = "Correto! Você acertou!";
-        score += 1
-        pontuacao.textContent = score
-        resetar.style.visibility = "visible"
-    } else {
-        condicao.innerText = "Errado! Tente novamente.";
+function escolheOpcao(arr, resultado) {
+    
+    for(let i = 0; i < arr.length; i++) {
+        arr[i].innerHTML = createValue(diffValue);
     }
-})
 
-opcao2.addEventListener("click", function() {
-    let condicao = document.getElementById("condicao")
+    let numOpcao = Math.floor(Math.random() * arr.length);
 
-    if (parseInt(opcao2.innerText) === resultado) {
-        condicao.innerText = "Correto! Você acertou!";
-        score += 1
-        pontuacao.textContent = score
-        resetar.style.visibility = "visible"
-    } else {
-        condicao.innerText = "Errado! Tente novamente.";
+    switch (arr) {
+        case arr:
+            arr[numOpcao].innerHTML = resultado;
+            break;
     }
-})
+}
 
-opcao3.addEventListener("click", function() {
-    let condicao = document.getElementById("condicao")
+//Cria EventListener para cada opção e verifica se a resposta está correta
+function checkValue(arr) {
+    for (let i = arr.length - 1; i >= 0; i--) {
 
-    if (parseInt(opcao3.innerText) === resultado) {
-        condicao.innerText = "Correto! Você acertou!";
-        score += 1
-        pontuacao.textContent = score
-        resetar.style.visibility = "visible"
-    } else {
-        condicao.innerText = "Errado! Tente novamente.";
+        let condicao = document.getElementById("condicao");
+
+        arr[i].addEventListener('click', function() {
+
+            if (parseInt(arr[i].innerText) === resultado || parseFloat(arr[i].innerText).toFixed(2) === resultado) {
+                condicao.innerText = "Correto! Você acertou!";
+                score++;
+                pontuacao.textContent = "Pontuação: " + score;
+                resetar.style.visibility = "visible";
+                chooseDiff(newValue)
+            } else {
+                condicao.innerText = "Errado! Tente novamente.";
+                score--;
+                pontuacao.textContent = "Pontuação: " + score;
+            }
+        });
     }
-})
-
-// function fazerChute(resultado,opcao) {
-//     if (opcao.innerHTML = resultado) {
-//         document.getElementById("resultado").innerHTML = ("resposta certa!")
-//     } else {
-//         document.getElementById("resultado").innerHTML = ("resposta errada!")
-//     }
-// }
+}

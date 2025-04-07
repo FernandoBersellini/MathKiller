@@ -9,9 +9,19 @@
 <body>
     <div class="menu">
         <h1>MathKiller</h1>
-        <button id="btnStart" type="button" onclick="startGame()">Começar</button>
+        <button id="btnStart" type="button">Começar</button>
         <button id="btnInstructions" type="button">Instruções</button>
         <button id="btnCredits" type="button">Créditos</button>
+    </div>
+
+    <div id="modalStart">
+        <div class="inner-modal">
+            <h1>Escolha a dificuldade</h1>
+            <button onclick="startGame()">Fácil</button>
+            <button onclick="startGame()">Normal</button>
+            <button onclick="startGame()">Difícil</button><br>
+            <button id="closeStart">Voltar</button>
+        </div>
     </div>
 
     <div id="modalInst">

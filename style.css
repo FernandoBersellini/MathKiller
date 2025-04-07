@@ -43,8 +43,10 @@
 
 .divOpcoes {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    width: clamp(50vh, 100%, 180vh);
+    height: clamp(45vh, 50%, 70vh);
     gap: 30px;
 }
 
@@ -65,7 +67,7 @@
     background-color: #686868;
 }
 
-#modalInst, #modalCred {
+#modalStart, #modalInst, #modalCred {
     visibility: hidden;
     top: 25vh;
     left: 50vh;
@@ -75,7 +77,7 @@
     justify-content: center;
 }
 
-#modalInst.open, #modalCred.open {
+#modalStart.open, #modalInst.open, #modalCred.open {
     visibility: visible;
 }
 
