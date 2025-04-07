@@ -2,8 +2,15 @@
 let diffValue = 0;
 let newValue = 10;
 
+let resultado = 0;
+
 //Pontuação
 let score = 0;
+
+const pontuacao = document.getElementById("pontuacao")
+pontuacao.textContent = score
+
+const resetar = document.getElementById("btnRestart")
 
 //Executa ao inicializar página
 window.onload = chooseDiff(newValue);
@@ -19,14 +26,15 @@ function createValue(diffValue) {
     return Math.floor(Math.random() * diffValue) + 1;
 }
 
+function desabilitarBotao(x,y,z) {
+    
+}
+
 //Inicializa o jogo
 function startGame(diffValue) {
     
     let num1 = createValue(diffValue);
     let num2 = createValue(diffValue);
-    
-    let resultado = 0;
-    let opcaoCerta = false;
     
     //Define quais operadores estarão disponíveis
     let op = 1;
@@ -71,6 +79,8 @@ function startGame(diffValue) {
     let opcao2 = document.getElementById("opcao2")
     let opcao3 = document.getElementById("opcao3")
 
+    const arr = [opcao1,opcao2,opcao3]
+
     opcao1.innerHTML = createValue(diffValue);
     opcao2.innerHTML = createValue(diffValue);
     opcao3.innerHTML = createValue(diffValue);
@@ -90,38 +100,51 @@ function startGame(diffValue) {
     }
 }
 
+let condicao = document.getElementById("condicao")
+
 opcao1.addEventListener("click", function() {
-    let condicao = document.getElementById("condicao")
+    // let condicao = document.getElementById("condicao")
 
     if (parseInt(opcao1.innerText) === resultado) {
         condicao.innerText = "Correto! Você acertou!";
+        score += 1
+        pontuacao.textContent = score
+        resetar.style.visibility = "visible"
     } else {
         condicao.innerText = "Errado! Tente novamente.";
     }
 })
 
-function fazerChute(resultado,opcao) {
-    if (opcao.innerHTML = resultado) {
-        document.getElementById("resultado").innerHTML = ("resposta certa!")
+opcao2.addEventListener("click", function() {
+    let condicao = document.getElementById("condicao")
+
+    if (parseInt(opcao2.innerText) === resultado) {
+        condicao.innerText = "Correto! Você acertou!";
+        score += 1
+        pontuacao.textContent = score
+        resetar.style.visibility = "visible"
     } else {
-        document.getElementById("resultado").innerHTML = ("resposta errada!")
+        condicao.innerText = "Errado! Tente novamente.";
     }
-}
+})
 
-/* function moveSquare() {
-    let a = Math.random() * 1000
-    let b = Math.random() * 1000
-    let c = Math.random() * window.innerHeight
-    let d = Math.random() * window.innerHeight
+opcao3.addEventListener("click", function() {
+    let condicao = document.getElementById("condicao")
 
-    let square = document.getElementById("square")
-    square.style.position = "absolute"
-    square.style.left = a + 'px'
-    square.style.right = b + 'px'
-    square.style.top = c + 'px'
-    square.style.bottom = c + 'px'
+    if (parseInt(opcao3.innerText) === resultado) {
+        condicao.innerText = "Correto! Você acertou!";
+        score += 1
+        pontuacao.textContent = score
+        resetar.style.visibility = "visible"
+    } else {
+        condicao.innerText = "Errado! Tente novamente.";
+    }
+})
 
-    let x = window.innerHeight
-
-    square.innerHTML = x
-}*/
+// function fazerChute(resultado,opcao) {
+//     if (opcao.innerHTML = resultado) {
+//         document.getElementById("resultado").innerHTML = ("resposta certa!")
+//     } else {
+//         document.getElementById("resultado").innerHTML = ("resposta errada!")
+//     }
+// }

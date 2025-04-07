@@ -12,13 +12,17 @@
             <h1>Qual o resultado de <span id="primeiroNum"></span> <span id="operacao"></span> <span id="segundoNum"></span>?</h1>
         
             <div class="container" id="opcoes">
-                <div id="opcao1" class="opcao1"></div>
-                <div id="opcao2" class="opcao2"></div>
-                <div id="opcao3" class="opcao3"></div>
-                <h1 id="condicao"></h1>
+                <div class="divOpcoes">
+                    <div id="opcao1" class="opcao1"></div>
+                    <div id="opcao2" class="opcao2"></div>
+                    <div id="opcao3" class="opcao3"></div>
+                </div>
+                <h1 id="pontuacao"></h1>
+                <h1 style="text-align: center;" id="condicao"></h1>
             </div>
+            <button class="leaveBtn" onclick="leaveGame()">Sair</button>
+            <button style="visibility: hidden;" id="btnRestart" onclick="startGame()">Recomecar</button>
         </div>
-        <button class="leaveBtn" onclick="leaveGame()">Sair</button>
     </body>
     <footer>
         <script src="/scripts/events.js"></script>
