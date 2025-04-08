@@ -1,5 +1,18 @@
-function startGame() {
-    window.location.href = "game.html";
+function startGame(value) {
+    switch(value) {
+        case 1:
+            sessionStorage.setItem('newValue', 5);
+            window.location.href = "game.html";
+            break;
+        case 2:
+            sessionStorage.setItem('newValue', 10);
+            window.location.href = "game.html";
+            break;
+        case 3:
+            sessionStorage.setItem('newValue', 50);
+            window.location.href = "game.html";
+            break;
+    }
 }
 
 function leaveGame() {

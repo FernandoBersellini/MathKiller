@@ -1,10 +1,15 @@
 //Valores de dificuldade
 let diffValue = 0;
-let newValue = 10;
+let newValue = parseInt(sessionStorage.getItem('newValue'));
 let resultado;
 
+//Arrays para guardar opções
+var qtdOpcoes = 3;
+let oldQtd;
+var arr = [], opcoes = [];
+
 //Verificador booleano para evitar criação desnecessária de EventListener
-var verify = false;
+let verify = false;
 
 //Pontuação
 let score = 0;
@@ -42,15 +47,16 @@ function startGame(diffValue) {
     
     if(diffValue >= 300) {
         op = 4;
+        qtdOpcoes = 16;
     } else if(diffValue >= 200) {
         op = 3;
+        qtdOpcoes = 12;
     } else if(diffValue >= 100) {
         op = 2;
+        qtdOpcoes = 6
     }
 
     let operacao = Math.floor(Math.random() * op) + 1;
-
-    console.log("Operador escolhido para calculo: " + operacao)
 
     let operator = document.getElementById("operacao")
 
@@ -73,32 +79,76 @@ function startGame(diffValue) {
             break
     }
     
+    //Insere os ambos os valores no elemento html
     document.getElementById("primeiroNum").innerHTML = num1
     document.getElementById("segundoNum").innerHTML = num2
 
-    let opcao1 = document.getElementById("opcao1")
-    let opcao2 = document.getElementById("opcao2")
-    let opcao3 = document.getElementById("opcao3")
-    let opcao4 = document.getElementById("opcao4")
-    let opcao5 = document.getElementById("opcao5")
-    let opcao6 = document.getElementById("opcao6")
-
-    const arr = [opcao1, opcao2, opcao3, opcao4, opcao5, opcao6];
-
-    //Escolhe uma opção aleatória e verifica se não haverá repetição de valores
-    escolheOpcao(arr, resultado);
-
+    if(oldQtd < qtdOpcoes) {
+        for(let i = 0; i < opcoes.length; i++) {
+            document.getElementById("divOpcoes").removeChild(opcoes[i]);
+        }
+        arr = [];
+        opcoes = [];
+        verify = false;
+    }
+    
+    oldQtd = qtdOpcoes;
+        
     //Verifica se a função já foi executada anteriormente
     if(!verify) {
+        for(let i = 0; i < qtdOpcoes; i++) {
+            opcoes[i] = document.createElement('div');
+            opcoes[i].setAttribute("id", "opcao" + i);
+            document.getElementById("divOpcoes").appendChild(opcoes[i]);
+        }
+
+        arr.push(...opcoes);
+
         checkValue(arr);
         verify = true;
     }
+
+    //Escolhe uma opção aleatória e verifica se não haverá repetição de valores
+    escolheOpcao(arr, resultado, diffValue);
+
 }
 
-function escolheOpcao(arr, resultado) {
+//Cria valores aleatórios para cada opção e adiciona uma opção para resposta
+function escolheOpcao(arr, resultado, diffValue) {
     
+    let num1, num2, operacao, valor;
+
     for(let i = 0; i < arr.length; i++) {
-        arr[i].innerHTML = createValue(diffValue);
+        num1 = createValue(diffValue);
+        num2 = createValue(diffValue);
+
+        let op = 1;
+        if(diffValue >= 300) {
+            op = 4;
+        } else if(diffValue >= 200) {
+            op = 3;
+        } else if(diffValue >= 100) {
+            op = 2;
+        }
+
+        operacao = Math.floor(Math.random() * op) + 1;
+
+        switch (operacao) {
+            case 1:
+                valor = num1 + num2
+                break
+            case 2:
+                valor = num1 - num2
+                break
+            case 3:
+                valor = num1 * num2
+                break
+            case 4:
+                valor = (num1/num2).toFixed(2)
+                break
+        }
+        
+        arr[i].innerHTML = valor;
     }
 
     let numOpcao = Math.floor(Math.random() * arr.length);
