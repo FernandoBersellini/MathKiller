@@ -9,6 +9,7 @@
     <body>
         <h1>MathKiller</h1>
         <h1 id="pontuacao"></h1>
+        <h1 id="timer"></h1>
         <div id="jogo">
             <h1>Qual o resultado de <span id="primeiroNum"></span> <span id="operacao"></span> <span id="segundoNum"></span>?</h1>
         
@@ -18,6 +19,16 @@
             </div>
             <button class="leaveBtn" onclick="leaveGame()">Sair</button>
             <button style="visibility: hidden;" id="btnRestart" onclick="window.location.reload()">Recomecar</button>
+        </div>
+
+        <div id="modalLoss">
+            <div class="inner-modal">
+                <h1>Você perdeu!!!</h1>
+                <h3>Sua pontuação final foi: <span id="showScore"></span></h3>
+                <p>Tentar novamente?</p>
+                <button class="leaveBtn" onclick="leaveGame()">Não</button>
+                <button id="btnRestart" onclick="window.location.reload()">Sim</button>
+            </div>
         </div>
     </body>
     <footer>

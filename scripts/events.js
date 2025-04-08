@@ -2,14 +2,17 @@ function startGame(value) {
     switch(value) {
         case 1:
             sessionStorage.setItem('newValue', 5);
+            sessionStorage.setItem('seconds', 60);
             window.location.href = "game.html";
             break;
         case 2:
             sessionStorage.setItem('newValue', 10);
+            sessionStorage.setItem('seconds', 30);
             window.location.href = "game.html";
             break;
         case 3:
-            sessionStorage.setItem('newValue', 50);
+            sessionStorage.setItem('newValue', 20);
+            sessionStorage.setItem('seconds', 10);
             window.location.href = "game.html";
             break;
     }
@@ -21,6 +24,7 @@ function leaveGame() {
 
 try {
     const btnStart = document.getElementById("btnStart");
+    const btnContinue = document.getElementById("btnContinue");
     const btnInst = document.getElementById("btnInstructions");
     const btnCred = document.getElementById("btnCredits");
     

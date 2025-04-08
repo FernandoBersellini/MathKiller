@@ -16,7 +16,7 @@
 }
 
 .menu {
-    margin: 25vh;
+    margin: 20vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,10 +44,10 @@
 .divOpcoes {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
-    width: clamp(50vh, 100%, 180vh);
+    justify-content: center;
+    width: 130vh;
     height: clamp(45vh, 50%, 70vh);
-    gap: 30px;
+    gap: 25px;
 }
 
 .divOpcoes div {
@@ -59,25 +59,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 700;
     transition: 0.3s;
 }
 
 
 .divOpcoes div:hover {
     background-color: #686868;
+    color: #fff;
 }
 
-#modalStart, #modalInst, #modalCred {
+#modalStart, #modalInst, #modalCred, #modalLoss {
+    position: fixed;
+    background-color: #ffaacc77;
     visibility: hidden;
-    top: 25vh;
-    left: 50vh;
-    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#modalStart.open, #modalInst.open, #modalCred.open {
+#modalStart.open, #modalInst.open, #modalCred.open, #modalLoss.open {
     visibility: visible;
 }
 
@@ -86,6 +91,23 @@
     padding: 100px 200px;
     border-radius: 15px;
     background: radial-gradient(#0af, #08d);
+}
+
+#timer {
+    position: fixed;
+    top: 5vh;
+    right: 5vh;
+}
+
+#btnStart {
+    background-color: #dbb;
+    padding: 20px 75px;
+    border-radius: 20px;
+    margin: 10px;
+}
+#btnStart:hover {
+    background-color: #fef;
+    cursor: pointer;
 }
 
 button {
